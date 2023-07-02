@@ -3,7 +3,7 @@ import cv2
 import functions as f
 import pytesseract as py
 
-img_path = "Images/test3.jpg"
+img_path = "Images/test4.jpg"
 img = cv2.imread(img_path)
 
 
@@ -13,7 +13,7 @@ gray_img=f.grayscale(img)
 
 #Binarization
 
-thresh,img_bw = cv2.threshold(gray_img,210,200,cv2.THRESH_BINARY)
+thresh,img_bw = cv2.threshold(gray_img,100,210,cv2.THRESH_BINARY)
 
 #Noise Removal
 
@@ -31,6 +31,13 @@ add= f.make_borders(thick)
 #extrecting text
 
 ocr_text=py.image_to_string(add)
+
+data={
+    'ocr':ocr_text,
+    'hehe':'haha',
+    'lol':'nop'
+}
+
 
 #extend boarder
 
