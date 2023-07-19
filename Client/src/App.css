@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --dark: #131417;
+  --dark-lighter: #1e1f26;
+  --grey: #e2e3e357;
+  --green-lighter: #47cf73;
+  --green: #248c46;
+  --white: #ffffff;
+}
+.App {
+  background-color: var(--dark);
+  height: 100vh;
+  padding: 0 10% 0 10%;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  padding: 2% 0 2% 0;
+}
+.project-name {
+  font-family: "Poppins";
+  font-size: 25px;
+  flex: 1;
+}
+.user-img {
+}
+.save-btn {
+  margin-right: 15px;
+}
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  background-color: var(--green-lighter);
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.3s all;
+}
+.btn-primary:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background-color: var(--grey);
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.3s all;
+}
+.btn-secondary:hover {
+  background-color: var(--dark-lighter);
+  color: var(--green-lighter);
+}
+.sections {
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5%;
+}
+.image-section,
+.ocr-section {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  width: 100%;
+  height: 80vh;
+  border: 1px solid var(--grey);
+}
+.ocr-section {
+  display: flex;
+  flex-direction: column;
+}
+.section-title {
+  display: flex;
+  height: 8%;
+  border-bottom: 1px solid var(--grey);
+}
+.section-title-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  border-top: 7px solid var(--grey);
+  background-color: var(--dark-lighter);
+  font-size: 20px;
+  font-weight: 600;
+}
+.code-editor {
+  flex: 1;
+}
+.ocr-btns {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 10%;
+  border-top: 1px solid var(--grey);
+}
+.compile-btn,
+.prettify-btn {
+  margin: 10px 0;
+  margin-right: 10px;
+  font-size: 1rem;
+  padding-left: 10px;
+  padding-right: 10px;
+}
