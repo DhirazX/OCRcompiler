@@ -1,12 +1,16 @@
 import React from "react";
 import "../App.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { BsCardImage } from "react-icons/bs";
 
 function imageInput({ onchangeHandler, selectedImage }) {
   return (
     <div className="image-section">
       <div className="section-title">
-        <div className="section-title-text">IMAGE</div>
+        <div className="section-title-text">
+          <BsCardImage className="section-title-icon"/>
+          IMAGE
+        </div>
       </div>
       <form action="" className="image-input">
         <div className="image-input-hero">

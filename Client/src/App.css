@@ -147,8 +147,11 @@
 .upload-icon {
   font-size: 80px;
 }
-
 #inputImg {
   height: 100%;
   width: 100%;
+}
+.section-title-icon{
+  color: var(--green-lighter);
+  margin-right: 10px;
 }

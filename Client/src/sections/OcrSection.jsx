@@ -1,10 +1,14 @@
 import React from "react";
+import { AiOutlineScan } from "react-icons/ai";
 
 function OcrSection() {
   return (
     <div className="ocr-section">
       <div className="section-title">
-        <div className="section-title-text">OCR</div>
+        <div className="section-title-text">
+          <AiOutlineScan className="section-title-icon" />
+          OCR
+        </div>
       </div>
       <div className="code-editor">Code</div>
       <div className="ocr-btns">
