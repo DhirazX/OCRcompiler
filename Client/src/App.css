@@ -133,5 +133,14 @@
   border: 2px dashed var(--green-lighter);
   border-radius: 3px;
   /* padding: 200px 200px; */
-  padding: 40%;
+  padding: 30%;
+}
+.image-input-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.upload-icon {
+  font-size: 80px;
 }
