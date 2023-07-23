@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 :root {
   --dark: #131417;
@@ -143,4 +144,13 @@
 }
 .upload-icon {
   font-size: 80px;
+}
+.image-view {
+  border: 2px solid red;
+  /* height: 100px; */
+  /* object-fit: contain; */
+}
+#inputImg {
+  height: 100%;
+  width: 100%;
 }

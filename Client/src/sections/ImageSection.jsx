@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 
-function imageInput() {
+function imageInput({ onchangeHandler, selectedImage }) {
   return (
     <div className="image-section">
       <div className="section-title">
@@ -22,8 +22,15 @@ function imageInput() {
             type="file"
             accept="image/*"
             className="imgInputBox"
+            onChange={onchangeHandler}
             hidden
           ></input>
+          <div className="image-view">
+            .
+            {selectedImage && (
+              <img src={URL.createObjectURL(selectedImage)} id="inputImg"></img>
+            )}
+          </div>
         </form>
       </div>
     </div>

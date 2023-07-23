@@ -5,12 +5,8 @@ import OcrSection from "./sections/OcrSection";
 import OutputSection from "./sections/OutputSection";
 
 function App() {
-  // const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
-
-  // const onchangeHandler = (e) => {
-  //   setSelectedImage(e.target.files[0]);
-  // };
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -34,6 +30,11 @@ function App() {
       });
   }, []);
 
+  const onchangeHandler = (e) => {
+    setSelectedImage(e.target.files[0]);
+    console.log(e.target.files[0]);
+  };
+
   return (
     <div className="App">
       {/* <div className="input-section">
@@ -55,11 +56,13 @@ function App() {
       </div>
 
       <div className="sections">
-        <ImageSection />
+        <ImageSection
+          onchangeHandler={onchangeHandler}
+          selectedImage={selectedImage}
+        />
         <OcrSection />
         <OutputSection />
       </div>
-      
     </div>
   );
 }
