@@ -11,8 +11,9 @@
 }
 .App {
   background-color: var(--dark);
-  height: 100vh;
+  /* height: 100%; */
   padding: 0 10% 0 10%;
+  padding-bottom: 5%;
 }
 .navbar {
   display: flex;
@@ -67,10 +68,11 @@
   color: var(--white);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5%;
+  gap: 2%;
 }
 .image-section,
-.ocr-section {
+.ocr-section,
+.output-section {
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -113,4 +115,15 @@
   font-size: 1rem;
   padding-left: 10px;
   padding-right: 10px;
+}
+.output-section {
+  grid-column-start: 0;
+  grid-column-end: span 2;
+}
+.image-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  height: 100%;
 }
