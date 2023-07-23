@@ -132,5 +132,6 @@
 .image-input {
   border: 2px dashed var(--green-lighter);
   border-radius: 3px;
-  padding: 200px 100px;
+  /* padding: 200px 200px; */
+  padding: 40%;
 }
