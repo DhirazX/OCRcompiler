@@ -7,8 +7,19 @@ function imageInput() {
       <div className="section-title">
         <div className="section-title-text">IMAGE</div>
       </div>
-      <div className="image-input">
-        <input type="file" accept="image/*"></input>
+      <div className="image-input-wrapper">
+        <form
+          action=""
+          onClick={() => document.querySelector(".imgInputBox").click()}
+          className="image-input"
+        >
+          <input
+            type="file"
+            accept="image/*"
+            className="imgInputBox"
+            hidden
+          ></input>
+        </form>
       </div>
     </div>
   );
