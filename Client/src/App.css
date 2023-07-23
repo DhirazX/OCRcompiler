@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 :root {
   --dark: #131417;
@@ -123,33 +122,32 @@
   grid-column-start: 0;
   grid-column-end: span 2;
 }
-.image-input-wrapper {
+.image-input {
+  height: 92%;
+  overflow: hidden;
+}
+.image-input-hero {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-  height: 92%;
+  height: 100%;
 }
-.image-input {
-  border: 2px dashed var(--green-lighter);
-  border-radius: 3px;
-  /* padding: 200px 200px; */
-  padding: 30%;
+.image-display {
+  margin: 20%;
 }
 .image-input-text {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border: 2px dashed var(--green-lighter);
+  border-radius: 3px;
+  padding: 30%;
 }
 .upload-icon {
   font-size: 80px;
 }
-.image-view {
-  border: 2px solid red;
-  /* height: 100px; */
-  /* object-fit: contain; */
-}
+
 #inputImg {
   height: 100%;
   width: 100%;
