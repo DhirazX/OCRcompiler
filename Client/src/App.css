@@ -103,6 +103,11 @@
 }
 .code-editor {
   flex: 1;
+  overflow: hidden;
+}
+.codemirror-wrapper {
+  height: 100%;
+  font-size: 1rem;
 }
 .ocr-btns {
   display: flex;
@@ -151,7 +156,7 @@
   height: 100%;
   width: 100%;
 }
-.section-title-icon{
+.section-title-icon {
   color: var(--green-lighter);
   margin-right: 10px;
 }
