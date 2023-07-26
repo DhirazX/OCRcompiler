@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineScan } from "react-icons/ai";
 import CodeMirror from "@uiw/react-codemirror";
 import { cpp } from "@codemirror/lang-cpp";
+import { EditorView } from "codemirror";
 import { dracula } from "@uiw/codemirror-theme-dracula";
 
 function OcrSection() {
@@ -21,7 +22,8 @@ function OcrSection() {
           for(i=0;i<12;i++){}"
           height="100%"
           theme={dracula}
-          extensions={[cpp({ cpp: true })]}
+          extensions={[cpp(), EditorView.lineWrapping]}
+          lineWrapping="true"
           className="codemirror-wrapper"
         />
       </div>
