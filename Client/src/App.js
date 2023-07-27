@@ -7,6 +7,7 @@ import OutputSection from "./sections/OutputSection";
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
+  const [code, setCode] = useState("");
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -30,11 +31,21 @@ function App() {
       });
   }, []);
 
-  const onchangeHandler = (e) => {
+  const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
 
+  const oninputChangeHandler = (e) => {
+    setCode(e);
+  };
+
+  const handleRunClick = () =>{
+    console.log(code);
+  }
+  // const oninputChangeHandler = (e) => {
+  //   // setCode(e.target.value);
+  //   console.log(e);
+  // };
   return (
     <div className="App">
       {/* <div className="input-section">
@@ -57,10 +68,10 @@ function App() {
 
       <div className="sections">
         <ImageSection
-          onchangeHandler={onchangeHandler}
+          onchangeHandler={onimgchangeHandler}
           selectedImage={selectedImage}
         />
-        <OcrSection />
+        <OcrSection code={code} onchangeHandler={oninputChangeHandler} handleRunClick={handleRunClick}/>
         <OutputSection />
       </div>
     </div>

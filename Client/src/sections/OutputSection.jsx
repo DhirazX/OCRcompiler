@@ -7,9 +7,12 @@ function OutputSection() {
       <div className="section-title">
         <div className="section-title-text">
           <MdOutlineOutput className="section-title-icon" />
-          OUTPUT
         </div>
       </div>
+      <textarea
+        rows={20}
+        cols={100}
+      ></textarea>
     </div>
   );
 }
