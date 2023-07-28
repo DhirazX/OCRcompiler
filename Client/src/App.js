@@ -3,6 +3,7 @@ import "./App.css";
 import ImageSection from "./sections/ImageSection.jsx";
 import OcrSection from "./sections/OcrSection";
 import OutputSection from "./sections/OutputSection";
+import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -39,9 +40,18 @@ function App() {
     setCode(e);
   };
 
-  const handleRunClick = () =>{
-    console.log(code);
-  }
+  const handleRunClick = async () => {
+    const payload = {
+      code,
+    };
+    // const output = () => {
+    //   return new Promise(function (resolve, reject) {
+    //     fetch("http://localhost:5000/py", payload);
+    //   });
+    // };
+    const output = await axios.post("http://localhost:5000/py", payload);
+    console.log(output.data.output);
+  };
   // const oninputChangeHandler = (e) => {
   //   // setCode(e.target.value);
   //   console.log(e);
@@ -71,7 +81,11 @@ function App() {
           onchangeHandler={onimgchangeHandler}
           selectedImage={selectedImage}
         />
-        <OcrSection code={code} onchangeHandler={oninputChangeHandler} handleRunClick={handleRunClick}/>
+        <OcrSection
+          code={code}
+          onchangeHandler={oninputChangeHandler}
+          handleRunClick={handleRunClick}
+        />
         <OutputSection />
       </div>
     </div>
