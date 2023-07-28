@@ -8,7 +8,7 @@ function imageInput({ onchangeHandler, selectedImage }) {
     <div className="image-section">
       <div className="section-title">
         <div className="section-title-text">
-          <BsCardImage className="section-title-icon"/>
+          <BsCardImage className="section-title-icon" />
           IMAGE
         </div>
       </div>
@@ -16,7 +16,11 @@ function imageInput({ onchangeHandler, selectedImage }) {
         <div className="image-input-hero">
           {selectedImage ? (
             <div className="image-display">
-              <img src={URL.createObjectURL(selectedImage)} id="inputImg"></img>
+              <img
+                src={URL.createObjectURL(selectedImage)}
+                id="inputImg"
+                alt="document"
+              ></img>
             </div>
           ) : (
             <div
