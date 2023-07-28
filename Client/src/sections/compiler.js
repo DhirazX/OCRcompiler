@@ -59,6 +59,14 @@ app.post("/py", (req, res) => {
   });
 });
 
+app.post("/cpp", (req, res) => {
+  const { code } = req.body;
+  var envData = { OS: "windows", cmd: "g++" };
+  compiler.compileCPP(envData, code, function (data) {
+    res.send(data);
+  });
+});
+
 app.listen(5000, () => {
   console.log(`Listening on port 5000!`);
 });

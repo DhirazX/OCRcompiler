@@ -9,6 +9,7 @@ function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
   const [code, setCode] = useState("");
+  const [output, setOutput] = useState("");
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -44,18 +45,11 @@ function App() {
     const payload = {
       code,
     };
-    // const output = () => {
-    //   return new Promise(function (resolve, reject) {
-    //     fetch("http://localhost:5000/py", payload);
-    //   });
-    // };
-    const output = await axios.post("http://localhost:5000/py", payload);
-    console.log(output.data.output);
+    const outputData = await axios.post("http://localhost:5000/py", payload);
+    console.log(outputData.data.output);
+    setOutput(outputData.data.output);
   };
-  // const oninputChangeHandler = (e) => {
-  //   // setCode(e.target.value);
-  //   console.log(e);
-  // };
+
   return (
     <div className="App">
       {/* <div className="input-section">
@@ -86,7 +80,7 @@ function App() {
           onchangeHandler={oninputChangeHandler}
           handleRunClick={handleRunClick}
         />
-        <OutputSection />
+        <OutputSection output={output} />
       </div>
     </div>
   );

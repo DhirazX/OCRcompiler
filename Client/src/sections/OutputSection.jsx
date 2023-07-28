@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineOutput } from "react-icons/md";
 
-function OutputSection() {
+function OutputSection({ output }) {
   return (
     <div className="output-section">
       <div className="section-title">
@@ -9,10 +9,7 @@ function OutputSection() {
           <MdOutlineOutput className="section-title-icon" />
         </div>
       </div>
-      <textarea
-        rows={20}
-        cols={100}
-      ></textarea>
+      <textarea rows={20} cols={100} value={output}></textarea>
     </div>
   );
 }
