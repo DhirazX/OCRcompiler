@@ -160,3 +160,10 @@
   color: var(--green-lighter);
   margin-right: 10px;
 }
+.output-code {
+  background-color: black;
+  padding: 1%;
+  height: 92%;
+  color: var(--white);
+  content: "thi si a ";
+}

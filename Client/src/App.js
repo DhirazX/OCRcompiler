@@ -3,10 +3,13 @@ import "./App.css";
 import ImageSection from "./sections/ImageSection.jsx";
 import OcrSection from "./sections/OcrSection";
 import OutputSection from "./sections/OutputSection";
+import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
+  const [code, setCode] = useState("");
+  const [output, setOutput] = useState("");
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -30,9 +33,21 @@ function App() {
       });
   }, []);
 
-  const onchangeHandler = (e) => {
+  const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
-    console.log(e.target.files[0]);
+  };
+
+  const oninputChangeHandler = (e) => {
+    setCode(e);
+  };
+
+  const handleRunClick = async () => {
+    const payload = {
+      code,
+    };
+    const outputData = await axios.post("http://localhost:5000/py", payload);
+    console.log(outputData.data.output);
+    setOutput(outputData.data.output);
   };
 
   return (
@@ -57,11 +72,15 @@ function App() {
 
       <div className="sections">
         <ImageSection
-          onchangeHandler={onchangeHandler}
+          onchangeHandler={onimgchangeHandler}
           selectedImage={selectedImage}
         />
-        <OcrSection />
-        <OutputSection />
+        <OcrSection
+          code={code}
+          onchangeHandler={oninputChangeHandler}
+          handleRunClick={handleRunClick}
+        />
+        <OutputSection output={output} />
       </div>
     </div>
   );
