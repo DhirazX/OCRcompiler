@@ -35,6 +35,7 @@ function App() {
 
   const onimgchangeHandler =(e) => {
     setSelectedImage(e.target.files[0]);
+    handleImageUpload();
   };
 
   const handleImageUpload = async () => {
