@@ -36,8 +36,10 @@ function App() {
 
   const onimgchangeHandler = async (e) => {
     setSelectedImage(e.target.files[0]);
+    const formData = new FormData();
+    formData.append('image', selectedImage);
     const payload = {
-      selectedImage,
+      formData
     };
     const ocrOutput = await axios.post("http://localhost:5000/image", payload);
     console.log(ocrOutput);
