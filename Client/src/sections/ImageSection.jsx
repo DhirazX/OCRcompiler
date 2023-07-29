@@ -3,7 +3,7 @@ import "../App.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BsCardImage } from "react-icons/bs";
 
-function imageInput({ onchangeHandler, selectedImage }) {
+function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
   return (
     <div className="image-section">
       <div className="section-title">
@@ -21,6 +21,7 @@ function imageInput({ onchangeHandler, selectedImage }) {
                 id="inputImg"
                 alt="document"
               ></img>
+              <button onClick={handleImageUpload}>Upload Image</button>
             </div>
           ) : (
             <div

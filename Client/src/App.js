@@ -7,7 +7,6 @@ import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [ocrOutput, setocrOutput] = useState("");
   const [data, setData] = useState({});
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
@@ -34,19 +33,27 @@ function App() {
       });
   }, []);
 
-  const onimgchangeHandler = async (e) => {
+  const onimgchangeHandler =(e) => {
     setSelectedImage(e.target.files[0]);
+  };
+
+  const handleImageUpload = async () => {
+    if (!selectedImage) return;
+
     const formData = new FormData();
     formData.append('image', selectedImage);
-    const payload = {
-      formData
-    };
-    const ocrOutput = await axios.post("http://localhost:5000/image", payload);
-    console.log(ocrOutput);
+
+    try{
+    const response = await axios.post("http://localhost:5000/image", formData);
+    console.log(response.data);
+    //Handles the response from the backend if needed
+    }catch(error){
+      console.error("Error uploading image:",error);
+    }
   };
 
   const oninputChangeHandler = (e) => {
-    setCode(e);
+    setCode(e.target.value);
   };
 
   const handleRunClick = async () => {
@@ -71,6 +78,7 @@ function App() {
       </div> */}
 
       {data.ocr}
+      
 
       <div className="navbar">
         <div className="project-name">Untitled</div>
@@ -82,6 +90,7 @@ function App() {
         <ImageSection
           onchangeHandler={onimgchangeHandler}
           selectedImage={selectedImage}
+          handleImageUpload={handleImageUpload} // Pass the image upload handler
         />
         <OcrSection
           code={code}
