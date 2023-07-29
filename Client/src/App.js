@@ -7,8 +7,8 @@ import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [data, setData] = useState({});
-  const [code, setCode] = useState("");
+  // const [data, setData] = useState({});
+  const [code, setCode] = useState({});
   const [output, setOutput] = useState("");
 
   // const convertImageToText = async () => {
@@ -29,7 +29,7 @@ function App() {
     fetch("/ocr")
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setCode(data.ocr);
       });
   }, []);
 
