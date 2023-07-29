@@ -24,7 +24,7 @@ function OcrSection({ onchangeHandler, code , handleRunClick}) {
           onChange={(e) => {
             onchangeHandler(e);
           }}
-          value={code}
+          value={code} 
           // onChangeCapture={onchangeHandler}
         />
       </div>
