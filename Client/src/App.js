@@ -7,6 +7,7 @@ import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [ocrOutput, setocrOutput] = useState("");
   const [data, setData] = useState({});
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
@@ -33,8 +34,13 @@ function App() {
       });
   }, []);
 
-  const onimgchangeHandler = (e) => {
+  const onimgchangeHandler = async (e) => {
     setSelectedImage(e.target.files[0]);
+    const payload = {
+      selectedImage,
+    };
+    const ocrOutput = await axios.post("http://localhost:5000/image", payload);
+    console.log(ocrOutput);
   };
 
   const oninputChangeHandler = (e) => {
