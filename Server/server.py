@@ -3,6 +3,7 @@ import main as m
 import json
 from flask_cors import CORS, cross_origin
 
+
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -16,15 +17,13 @@ def add_cors_headers(response):
 def upload_image():
     if 'image' not in request.files:
         return "No image in th request",400
-    
     image = request.files['image']
     image.save('Images/image.jpg')
     return "Image uploaded successfully",200
 
-data=m.process()
-
 @app.route("/ocr")
 def ocr():
+    data=m.process()
     a=json.dumps(data)
     return a
 

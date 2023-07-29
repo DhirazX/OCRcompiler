@@ -44,10 +44,7 @@ function App() {
     formData.append("image", selectedImage);
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/image",
-        formData
-      );
+      const response = await axios.post("http://localhost:5000/image",formData);
       console.log(response.data);
       //Handles the response from the backend if needed
     } catch (error) {

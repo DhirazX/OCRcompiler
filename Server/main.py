@@ -4,7 +4,7 @@ import functions as f
 import pytesseract as py
 
 def process():
-    img_path = "Images/image.jpg"
+    img_path = "Images/test4.jpg"
     img = cv2.imread(img_path)
 
 
@@ -38,7 +38,6 @@ def process():
         'hehe':'haha',
         'lol':'nop'
     }
-
     return data
     #extend boarder
 
