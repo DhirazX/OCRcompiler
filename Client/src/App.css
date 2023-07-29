@@ -1,4 +1,6 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 :root {
@@ -11,8 +13,9 @@
 }
 .App {
   background-color: var(--dark);
-  height: 100vh;
+  /* height: 100%; */
   padding: 0 10% 0 10%;
+  padding-bottom: 5%;
 }
 .navbar {
   display: flex;
@@ -67,10 +70,11 @@
   color: var(--white);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5%;
+  gap: 2%;
 }
 .image-section,
-.ocr-section {
+.ocr-section,
+.output-section {
   /* display: flex;
   align-items: center;
   justify-content: center; */
@@ -99,6 +103,11 @@
 }
 .code-editor {
   flex: 1;
+  overflow: hidden;
+}
+.codemirror-wrapper {
+  height: 100%;
+  font-size: 1rem;
 }
 .ocr-btns {
   display: flex;
@@ -113,4 +122,48 @@
   font-size: 1rem;
   padding-left: 10px;
   padding-right: 10px;
+}
+.output-section {
+  grid-column-start: 0;
+  grid-column-end: span 2;
+}
+.image-input {
+  height: 92%;
+  overflow: hidden;
+}
+.image-input-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.image-display {
+  margin: 20%;
+}
+.image-input-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px dashed var(--green-lighter);
+  border-radius: 3px;
+  padding: 30%;
+}
+.upload-icon {
+  font-size: 80px;
+}
+#inputImg {
+  height: 100%;
+  width: 100%;
+}
+.section-title-icon {
+  color: var(--green-lighter);
+  margin-right: 10px;
+}
+.output-code {
+  background-color: black;
+  padding: 1%;
+  height: 92%;
+  color: var(--white);
+  content: "thi si a ";
 }

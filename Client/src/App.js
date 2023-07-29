@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import ImageSection from "./sections/ImageSection.jsx";
+import OcrSection from "./sections/OcrSection";
+import OutputSection from "./sections/OutputSection";
+import axios from "axios";
 
 function App() {
-  // const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
-
-  // const onchangeHandler = (e) => {
-  //   setSelectedImage(e.target.files[0]);
-  // };
+  const [code, setCode] = useState("");
+  const [output, setOutput] = useState("");
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -31,6 +33,23 @@ function App() {
       });
   }, []);
 
+  const onimgchangeHandler = (e) => {
+    setSelectedImage(e.target.files[0]);
+  };
+
+  const oninputChangeHandler = (e) => {
+    setCode(e);
+  };
+
+  const handleRunClick = async () => {
+    const payload = {
+      code,
+    };
+    const outputData = await axios.post("http://localhost:5000/py", payload);
+    console.log(outputData.data.output);
+    setOutput(outputData.data.output);
+  };
+
   return (
     <div className="App">
       {/* <div className="input-section">
@@ -52,22 +71,16 @@ function App() {
       </div>
 
       <div className="sections">
-        <div className="image-section">
-          <div className="section-title">
-            <div className="section-title-text">IMAGE</div>
-          </div>
-          Image
-        </div>
-        <div className="ocr-section">
-          <div className="section-title">
-            <div className="section-title-text">OCR</div>
-          </div>
-          <div className="code-editor">Code</div>
-          <div className="ocr-btns">
-            <div className="compile-btn btn-primary">Compile</div>
-            <div className="prettify-btn btn-secondary">Prettify</div>
-          </div>
-        </div>
+        <ImageSection
+          onchangeHandler={onimgchangeHandler}
+          selectedImage={selectedImage}
+        />
+        <OcrSection
+          code={code}
+          onchangeHandler={oninputChangeHandler}
+          handleRunClick={handleRunClick}
+        />
+        <OutputSection output={output} />
       </div>
     </div>
   );
