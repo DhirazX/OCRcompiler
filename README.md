@@ -9,7 +9,7 @@ ultimately compile it
 <sub><sup>__Note__: This project uses the Flask framework written in Python. So you need a python interpreter on your system.</sup></sub>
 ### For Linux/MacOS:
 + Clone the repo:
-    ` git clone https://github.com/pratik-devkota/noteshub.git](https://github.com/DhirazX/OCRcompiler.git`
+    ` git clone https://github.com/DhirazX/OCRcompiler.git`
 + Make a virtual environment inside server dir. Eg:
     `python -m venv venv`
 + Activate the virtual environment. Eg:
