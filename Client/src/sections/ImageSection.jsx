@@ -21,7 +21,7 @@ function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
                 id="inputImg"
                 alt="document"
               ></img>
-              {/* <button onClick={handleImageUpload}>Upload Image</button> */}
+              <button onClick={handleImageUpload}>Upload Image</button>
             </div>
           ) : (
             <div

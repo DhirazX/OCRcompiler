@@ -33,23 +33,25 @@ function App() {
       });
   }, []);
 
-  const onimgchangeHandler =(e) => {
+  const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
-    handleImageUpload();
   };
 
   const handleImageUpload = async () => {
     if (!selectedImage) return;
 
     const formData = new FormData();
-    formData.append('image', selectedImage);
+    formData.append("image", selectedImage);
 
-    try{
-    const response = await axios.post("http://localhost:5000/image", formData);
-    console.log(response.data);
-    //Handles the response from the backend if needed
-    }catch(error){
-      console.error("Error uploading image:",error);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/image",
+        formData
+      );
+      console.log(response.data);
+      //Handles the response from the backend if needed
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
   };
 
@@ -79,7 +81,6 @@ function App() {
       </div> */}
 
       {data.ocr}
-      
 
       <div className="navbar">
         <div className="project-name">Untitled</div>
