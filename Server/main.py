@@ -13,7 +13,7 @@ gray_img=f.grayscale(img)
 
 #Binarization
 
-thresh,img_bw = cv2.threshold(gray_img,100,210,cv2.THRESH_BINARY)
+thresh,img_bw = cv2.threshold(gray_img,100,210,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 
 #Noise Removal
 
