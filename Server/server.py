@@ -9,7 +9,7 @@ def ocr():
     a=json.dumps(m.data)
     return a
 
-@app.route('/py', methods=['POST'])
+@app.route('/image', methods=['POST'])
 def upload_image():
     if 'image' not in request.files:
         return "No image in th request",400
