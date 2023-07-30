@@ -165,5 +165,5 @@
   padding: 1%;
   height: 92%;
   color: var(--white);
-  content: "thi si a ";
+  overflow: hidden;
 }
