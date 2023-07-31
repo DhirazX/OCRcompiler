@@ -7,7 +7,7 @@ import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [data, setData] = useState({});
+ // const [data, setData] = useState({});
   const [code, setCode] = useState({});
   const [output, setOutput] = useState("");
 
@@ -77,7 +77,7 @@ function App() {
         )}
       </div> */}
 
-      {data.ocr}
+      {/* {data.ocr} */}
 
       <div className="navbar">
         <div className="project-name">Untitled</div>
