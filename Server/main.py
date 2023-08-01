@@ -14,7 +14,7 @@ def process():
 
     #Binarization
 
-    thresh,img_bw = cv2.threshold(gray_img,100,210,cv2.THRESH_BINARY)
+    thresh,img_bw = cv2.adaptiveThreshold(gray_img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,3)
 
     #Noise Removal
 
