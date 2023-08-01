@@ -2,6 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 :root {
   --dark: #131417;
@@ -10,6 +12,9 @@
   --green-lighter: #47cf73;
   --green: #248c46;
   --white: #ffffff;
+}
+.primary-color {
+  color: var(--green-lighter);
 }
 .App {
   background-color: var(--dark);
@@ -28,6 +33,8 @@
   font-family: "Poppins";
   font-size: 25px;
   flex: 1;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .user-img {
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import { MdOutlineOutput } from "react-icons/md";
 
-function OutputSection({ output }) {
+function OutputSection({ output , ref}) {
   return (
-    <div className="output-section">
+    <div className="output-section" ref={ref}>
       <div className="section-title">
         <div className="section-title-text">
           <MdOutlineOutput className="section-title-icon" />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 import ImageSection from "./sections/ImageSection.jsx";
 import OcrSection from "./sections/OcrSection";
@@ -10,6 +10,7 @@ function App() {
   const [data, setData] = useState({});
   const [code, setCode] = useState({});
   const [output, setOutput] = useState("");
+  const ref = useRef(null);
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -44,7 +45,10 @@ function App() {
     formData.append("image", selectedImage);
 
     try {
-      const response = await axios.post("http://localhost:5000/image",formData);
+      const response = await axios.post(
+        "http://localhost:5000/image",
+        formData
+      );
       console.log(response.data);
       //Handles the response from the backend if needed
     } catch (error) {
@@ -63,6 +67,7 @@ function App() {
     const outputData = await axios.post("http://localhost:4999/py", payload);
     console.log(outputData.data.output);
     setOutput(outputData.data.output);
+    ref.current?.scrollIntoView({behavior: 'smooth'});
   };
 
   return (
@@ -80,7 +85,9 @@ function App() {
       {data.ocr}
 
       <div className="navbar">
-        <div className="project-name">Untitled</div>
+        <div className="project-name">
+          <span className="primary-color">OCR</span>compiler
+        </div>
         <div className="save-btn btn-primary">Save</div>
         <div className="user-img">.</div>
       </div>
@@ -96,7 +103,7 @@ function App() {
           onchangeHandler={oninputChangeHandler}
           handleRunClick={handleRunClick}
         />
-        <OutputSection output={output} />
+        <OutputSection output={output} ref={ref}/>
       </div>
     </div>
   );
