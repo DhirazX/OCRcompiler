@@ -24,7 +24,7 @@ ultimately compile it
 
 # Objectives
 + The current objective of the project is:
-  -Accurate code recognition from printed or handwritten sources.
-  -Support for different writing styles.
-  -High accuracy and reliability in code recognition to minimize errors.
+    - Accurate code recognition from printed or handwritten sources.
+    - Support for different writing styles.
+    - High accuracy and reliability in code recognition to minimize errors.
 
