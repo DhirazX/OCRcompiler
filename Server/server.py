@@ -23,7 +23,7 @@ def upload_image():
 
 @app.route("/ocr")
 def ocr():
-    data=m.process()
+    data=m.run()
     a=json.dumps(data)
     return a
 
