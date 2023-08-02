@@ -7,7 +7,7 @@ ultimately compile it
 
 # Installation
 <sub><sup>__Note__: This project uses the Flask framework written in Python. So you need a python interpreter on your system.</sup></sub>
-### For Linux/MacOS:
+### For Linux/MacOS/Windows:
 + Clone the repo:
     ` git clone https://github.com/DhirazX/OCRcompiler.git`
 + Make a virtual environment inside server dir. Eg:
@@ -21,9 +21,6 @@ ultimately compile it
 + Run the server.
     `python server.py`
 + Go to the url `localhost:3000` on your browser.
-
-### For Windows:
-+ Consider using Linux.
 
 # Objectives
 + The current objective of the project is:
