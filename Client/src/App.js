@@ -52,7 +52,7 @@ function App() {
       .then((data) => {
         setCode(data);
       });
-  }, []);
+  }, [selectedImage]);
 
   const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
