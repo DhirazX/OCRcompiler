@@ -119,16 +119,16 @@
 .ocr-btns {
   display: flex;
   flex-direction: row-reverse;
-  height: 10%;
+  /* height: 10%; */
   border-top: 1px solid var(--grey);
 }
 .compile-btn,
-.prettify-btn {
+.prettify-btn,
+.scan-btn {
   margin: 10px 0;
   margin-right: 10px;
   font-size: 1rem;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 8px 10px;
 }
 .output-section {
   grid-column-start: 0;
@@ -142,10 +142,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  position: relative;
   height: 100%;
 }
 .image-display {
   margin: 20%;
+}
+.btn-section {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
 }
 .image-input-text {
   display: flex;

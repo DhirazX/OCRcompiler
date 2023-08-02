@@ -15,13 +15,14 @@ function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
       <form action="" className="image-input">
         <div className="image-input-hero">
           {selectedImage ? (
-            <div className="image-display">
-              <img
-                src={URL.createObjectURL(selectedImage)}
-                id="inputImg"
-                alt="document"
-              ></img>
-              <button onClick={handleImageUpload}>Upload Image</button>
+            <div>
+              <div className="image-display">
+                <img
+                  src={URL.createObjectURL(selectedImage)}
+                  id="inputImg"
+                  alt="document"
+                ></img>
+              </div>
             </div>
           ) : (
             <div
@@ -31,6 +32,15 @@ function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
               <AiOutlineCloudUpload className="upload-icon" />
               <p>Click to Upload</p>
             </div>
+          )}
+          {selectedImage ? (
+            <div className="btn-section">
+              <div className="scan-btn btn-primary" onClick={handleImageUpload}>
+                Scan
+              </div>
+            </div>
+          ) : (
+            <div></div>
           )}
         </div>
         <input
