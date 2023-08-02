@@ -1,9 +1,9 @@
 # OCR_Compiler
 __OCR_Compiler__ is a web application designed to streamline the process of working with
-handwritten code. Leveraging the power of Optical Character Recognition (OCR) tech-
-nology, this project aims to bridge the gap between analog and digital programming by
+handwritten code. Leveraging the power of Optical Character Recognition (OCR) technology, 
+this project aims to bridge the gap between analog and digital programming by
 enabling users to scan handwritten code, convert it to editable text, prettify the code, and
-ultimately compile it
+ultimately compile it.
 
 # Installation
 <sub><sup>__Note__: This project uses the Flask framework written in Python. So you need a python interpreter on your system.</sup></sub>
