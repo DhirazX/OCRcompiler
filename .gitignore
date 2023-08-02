@@ -3,3 +3,4 @@ Client/node_modules/
 node_modules/
 Server/venv/
 Server/myVenv/
+Server/test.py

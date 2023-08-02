@@ -3,47 +3,31 @@ import cv2
 import functions as f
 import pytesseract as py
 
-def process():
-    img_path = "Images/test4.jpg"
+
+def run():
+    img_path = "Images/test6.jpg"
     img = cv2.imread(img_path)
 
+    #Image processing
+    img_bw = f.img_Processing(img)
+    
+    #Edge Detection
+    edged=cv2.Canny(img_bw,10,50)
 
-    #Grayscale
-
-    gray_img=f.grayscale(img)
-
-    #Binarization
-
-    thresh,img_bw = cv2.adaptiveThreshold(gray_img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,3)
-
-    #Noise Removal
-
-    noiserem_img = f.noise_removal(img_bw)
-
-
-    #add thickenss 
-
-    thick=f.thick_font(noiserem_img)
-
-    #extend broder
-
-    add= f.make_borders(thick)
-
-    #extrecting text
-
-    ocr_text=py.image_to_string(add)
+    #Contures detection and Prespective transformation
+    image_output  = f.contures_detection(edged,img)
+    
+    #OCR section 
+    ocr_img = f.img_Processing(image_output)
+    ocr_text=py.image_to_string(ocr_img)
 
     data={
         'ocr':ocr_text,
-        'hehe':'haha',
-        'lol':'nop'
+        'NA':'test'
     }
     return data
-    #extend boarder
-
-    # add1=cv2.imread("temp/add.jpg")
-    # removed=f.remove_borders(add1)
-    # cv2.imwrite("Temp/removedb_image.jpg",removed)
+    
+run()
 
 
 
