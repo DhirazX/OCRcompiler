@@ -33,14 +33,12 @@ function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
               <p>Click to Upload</p>
             </div>
           )}
-          {selectedImage ? (
+          {selectedImage && (
             <div className="btn-section">
-              <div className="scan-btn btn-primary" onClick={handleImageUpload}>
+              <div className="scan-btn btn-secondary" onClick={handleImageUpload}>
                 Scan
               </div>
             </div>
-          ) : (
-            <div></div>
           )}
         </div>
         <input

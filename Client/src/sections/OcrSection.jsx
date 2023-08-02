@@ -30,7 +30,7 @@ function OcrSection({ onchangeHandler, code , handleRunClick}) {
       </div>
       <div className="ocr-btns">
         <div className="compile-btn btn-primary" onClick={handleRunClick}>Compile</div>
-        <div className="prettify-btn btn-secondary">Prettify</div>
+        {/* <div className="prettify-btn btn-secondary">Prettify</div> */}
       </div>
     </div>
   );

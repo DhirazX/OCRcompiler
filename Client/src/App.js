@@ -3,14 +3,16 @@ import "./App.css";
 import ImageSection from "./sections/ImageSection.jsx";
 import OcrSection from "./sections/OcrSection";
 import OutputSection from "./sections/OutputSection";
+import ErrorModal from "./sections/ErrorModal";
 import axios from "axios";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
- // const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [code, setCode] = useState({});
   const [output, setOutput] = useState("");
   const ref = useRef(null);
+  const [modal, setModal] = useState(false);
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -24,6 +26,24 @@ function App() {
   // useEffect(() => {
   //   convertImageToText();
   // }, [selectedImage]);
+
+  //Downloads the code as a txt file
+  const downloadTxtFile = () => {
+    if (code.ocr) {
+      const element = document.createElement("a");
+      const file = new Blob([code.ocr], { type: "text/plain" });
+      element.href = URL.createObjectURL(file);
+      element.download = "code.txt";
+      document.body.appendChild(element);
+      element.click();
+    } else {
+      setModal(true);
+      setTimeout(() => {
+        setModal(false);
+      }, 2000);
+      console.log(modal);
+    }
+  };
 
   //Fetches data
   useEffect(() => {
@@ -67,7 +87,7 @@ function App() {
     const outputData = await axios.post("http://localhost:4999/py", payload);
     console.log(outputData.data.output);
     setOutput(outputData.data.output);
-    ref.current?.scrollIntoView({behavior: 'smooth'});
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -88,10 +108,11 @@ function App() {
         <div className="project-name">
           <span className="primary-color">OCR</span>compiler
         </div>
-        <div className="save-btn btn-primary">Save</div>
-        <div className="user-img">.</div>
+        <div className="save-btn btn-primary" onClick={downloadTxtFile}>
+          Download Code
+        </div>
+        {/* <div className="user-img">.</div> */}
       </div>
-
       <div className="sections">
         <ImageSection
           onchangeHandler={onimgchangeHandler}
@@ -103,7 +124,8 @@ function App() {
           onchangeHandler={oninputChangeHandler}
           handleRunClick={handleRunClick}
         />
-        <OutputSection output={output} ref={ref}/>
+        <ErrorModal modal={modal} />
+        <OutputSection output={output} ref={ref} />
       </div>
     </div>
   );

@@ -36,11 +36,6 @@
   font-weight: 600;
   text-transform: uppercase;
 }
-.user-img {
-}
-.save-btn {
-  margin-right: 15px;
-}
 .btn-primary {
   display: flex;
   align-items: center;
