@@ -20,7 +20,10 @@ def run():
     #OCR section 
     ocr_img = f.img_Processing(image_output)
     ocr_text=py.image_to_string(ocr_img)
-
+    
+    #testing
+    #cv2.imshow("test",f.rescaleFrame(ocr_img))
+    # cv2.waitKey(0)
     data={
         'ocr':ocr_text,
         'NA':'test'

@@ -2,18 +2,24 @@ import cv2
 import numpy as np
 
 def img_Processing(img):
-        #Grayscale
-        gray_img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        
-        #Noise Removal
-        gray_img = cv2.bilateralFilter(gray_img,20,30,30)
+    #Grayscale
+    gray_img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    
+    #Noise Removal
+    gray_img = cv2.bilateralFilter(gray_img,20,30,30)
 
-        #Binarization
-        img_bw = cv2.adaptiveThreshold(gray_img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,3)
-        return img_bw
+    #Binarization
+    img_bw = cv2.adaptiveThreshold(gray_img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,3)
+
+    #Morph
+    kernal = np.ones((3,2),np.uint8)
+    op = cv2.morphologyEx(img_bw,cv2.MORPH_OPEN,kernal)
+    
+    er=cv2.erode(op,kernal,iterations=1)
+    return er
     
 #Resize and rescale
-def rescaleFrame(frame,scale=0.2): 
+def rescaleFrame(frame,scale=0.5): 
     width = int(frame.shape[1]*scale) 
     height = int(frame.shape[0]*scale)
     dimensions = (width,height)
@@ -77,54 +83,3 @@ def contures_detection(edged,img):
         #For debugging 
         cv2.drawContours(img_temp, [biggest], -1, (0, 255, 0), 5)
         return img_output
-
-#Noise Removal Function basic 
-
-# def noise_removal(image):
-#     kernel = np.ones((1, 1), np.uint8)
-#     image = cv2.dilate(image, kernel, iterations=1)
-#     kernel = np.ones((1, 1), np.uint8)
-#     image = cv2.erode(image, kernel, iterations=1)
-#     image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
-#     image = cv2.medianBlur(image, 3)
-#     return (image)
-
-# #Letter thining fuction
-
-# def thin_font(image):
-#     image = cv2.bitwise_not(image)
-#     kernel = np.ones((2,2),np.uint8)
-#     image = cv2.erode(image, kernel, iterations=1)
-#     image = cv2.bitwise_not(image)
-#     return (image)
-
-
-# #Letter thickening fuction
-
-# def thick_font(image):
-#     image = cv2.bitwise_not(image)
-#     kernel = np.ones((2,2),np.uint8)
-#     image = cv2.dilate(image, kernel, iterations=1)
-#     image = cv2.bitwise_not(image)
-#     return (image)
-
-
-# #Remove Boarder
-
-# def remove_borders(image):
-#     contours, heiarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-#     cntsSorted = sorted(contours, key=lambda x:cv2.contourArea(x))
-#     cnt = cntsSorted[1]
-#     x, y, w, h = cv2.boundingRect(cnt)
-#     crop = image[y:y+h, x:x+w]
-#     return (crop)
-
-# #add boarder
-
-# def make_borders(image):
-#     color = [255, 255, 255]
-#     top, bottom, left, right = [150]*4
-#     image_with_border = cv2.copyMakeBorder(image, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color)
-#     return image_with_border
-    
-    
