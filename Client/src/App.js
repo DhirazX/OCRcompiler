@@ -5,6 +5,7 @@ import OcrSection from "./sections/OcrSection";
 import OutputSection from "./sections/OutputSection";
 import ErrorModal from "./sections/ErrorModal";
 import axios from "axios";
+import Tesseract from "tesseract.js";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -61,19 +62,32 @@ function App() {
   const handleImageUpload = async () => {
     if (!selectedImage) return;
 
-    const formData = new FormData();
-    formData.append("image", selectedImage);
+     // Perform OCR on the image using Tesseract
+     const textData = await Tesseract.recognize(selectedImage, "eng", {
+      logger: (m) => console.log(m),
+    });
 
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/image",
-        formData
-      );
-      console.log(response.data);
-      //Handles the response from the backend if needed
-    } catch (error) {
-      console.error("Error uploading image:", error);
+    // Check if the OCR output contains a substantial amount of text
+    const minTextLength = 50; 
+
+    if (textData.data.text.length >= minTextLength) {
+      const formData = new FormData();
+      formData.append("image", selectedImage);
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/image",
+          formData
+        );
+        console.log(response.data);
+        //Handles the response from the backend if needed
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
+    }else{
+      alert("Invalid image! Please upload a document image.");
     }
+
   };
 
   const oninputChangeHandler = (e) => {

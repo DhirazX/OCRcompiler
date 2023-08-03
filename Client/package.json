@@ -20,9 +20,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-image-crop": "^10.1.5",
     "react-scripts": "^5.0.1",
     "react-slider": "^2.0.5",
-    "tesseract.js": "^4.1.0",
+    "tesseract.js": "^4.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
