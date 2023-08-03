@@ -49,13 +49,7 @@ function App() {
   };
 
   //Fetches data
-  useEffect(() => {
-    fetch("/ocr")
-      .then((response) => response.json())
-      .then((data) => {
-        setCode(data);
-      });
-  }, [selectedImage]);
+  useEffect(() => {}, [selectedImage]);
 
   const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
@@ -82,6 +76,11 @@ function App() {
           formData
         );
         console.log(response.data);
+        fetch("/ocr")
+          .then((response) => response.json())
+          .then((data) => {
+            setCode(data);
+          });
         //Handles the response from the backend if needed
       } catch (error) {
         console.error("Error uploading image:", error);
@@ -139,7 +138,7 @@ function App() {
             <span className="primary-color">OCR</span>compiler
           </div>
           <div className="save-btn btn-primary" onClick={downloadTxtFile}>
-            Download Code
+            {window.innerWidth <= 450 ? "D" : "Download Code"}
           </div>
           {/* <div className="user-img">.</div> */}
         </div>
