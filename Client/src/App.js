@@ -135,7 +135,7 @@ function App() {
 
         {/* {data.ocr} */}
         <div className="navbar">
-          <div className="project-name">
+          <div className="logo">
             <span className="primary-color">OCR</span>compiler
           </div>
           <div className="save-btn btn-primary" onClick={downloadTxtFile}>

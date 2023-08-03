@@ -29,12 +29,13 @@
   color: var(--white);
   padding: 2% 0 2% 0;
 }
-.project-name {
+.logo {
   font-family: "Poppins";
   font-size: 25px;
   flex: 1;
   font-weight: 600;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .btn-primary {
   display: flex;
@@ -47,6 +48,7 @@
   font-size: 18px;
   font-weight: 500;
   transition: 0.3s all;
+  cursor: pointer;
 }
 .btn-primary:hover {
   background-color: var(--green);
@@ -63,6 +65,7 @@
   font-size: 18px;
   font-weight: 500;
   transition: 0.3s all;
+  cursor: pointer;
 }
 .btn-secondary:hover {
   background-color: var(--dark-lighter);
@@ -161,6 +164,7 @@
   border: 2px dashed var(--green-lighter);
   border-radius: 3px;
   padding: 30%;
+  cursor: pointer;
 }
 .upload-icon {
   font-size: 80px;
