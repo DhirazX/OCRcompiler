@@ -14,6 +14,7 @@ function App() {
   const [output, setOutput] = useState("");
   const ref = useRef(null);
   const [modal, setModal] = useState(false);
+  const [modalText, setModalText] = useState("");
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -39,10 +40,11 @@ function App() {
       element.click();
     } else {
       setModal(true);
+      setModalText("Theres no code to download.");
       setTimeout(() => {
         setModal(false);
+        setModalText("");
       }, 2000);
-      console.log(modal);
     }
   };
 
@@ -62,13 +64,13 @@ function App() {
   const handleImageUpload = async () => {
     if (!selectedImage) return;
 
-     // Perform OCR on the image using Tesseract
-     const textData = await Tesseract.recognize(selectedImage, "eng", {
+    // Perform OCR on the image using Tesseract
+    const textData = await Tesseract.recognize(selectedImage, "eng", {
       logger: (m) => console.log(m),
     });
 
     // Check if the OCR output contains a substantial amount of text
-    const minTextLength = 50; 
+    const minTextLength = 50;
 
     if (textData.data.text.length >= minTextLength) {
       const formData = new FormData();
@@ -84,10 +86,14 @@ function App() {
       } catch (error) {
         console.error("Error uploading image:", error);
       }
-    }else{
-      alert("Invalid image! Please upload a document image.");
+    } else {
+      setModal(true);
+      setModalText("Insert a valid document");
+      setTimeout(() => {
+        setModal(false);
+        setModalText("");
+      }, 2000);
     }
-
   };
 
   const oninputChangeHandler = (e) => {
@@ -95,51 +101,61 @@ function App() {
   };
 
   const handleRunClick = async () => {
-    const payload = {
-      code,
-    };
-    const outputData = await axios.post("http://localhost:4999/py", payload);
-    console.log(outputData.data.output);
-    setOutput(outputData.data.output);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    if (!code.ocr) {
+      setModal(true);
+      setModalText("Theres no code to compile.");
+      setTimeout(() => {
+        setModal(false);
+        setModalText("");
+      }, 2000);
+    } else {
+      const payload = {
+        code,
+      };
+      const outputData = await axios.post("http://localhost:4999/py", payload);
+      console.log(outputData.data.output);
+      setOutput(outputData.data.output);
+      ref.current?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <div className="App">
-      {/* <div className="input-section">
+    <div>
+      <div className="App">
+        <ErrorModal modal={modal} modalText={modalText} />
+        {/* <div className="input-section">
         <input type="file" accept="image/*" onChange={onchangeHandler}></input>
       </div> */}
 
-      {/* <div className="image-view">
+        {/* <div className="image-view">
         {selectedImage && (
           <img src={URL.createObjectURL(selectedImage)} id="inputImg"></img>
         )}
       </div> */}
 
-      {/* {data.ocr} */}
-
-      <div className="navbar">
-        <div className="project-name">
-          <span className="primary-color">OCR</span>compiler
+        {/* {data.ocr} */}
+        <div className="navbar">
+          <div className="project-name">
+            <span className="primary-color">OCR</span>compiler
+          </div>
+          <div className="save-btn btn-primary" onClick={downloadTxtFile}>
+            Download Code
+          </div>
+          {/* <div className="user-img">.</div> */}
         </div>
-        <div className="save-btn btn-primary" onClick={downloadTxtFile}>
-          Download Code
+        <div className="sections">
+          <ImageSection
+            onchangeHandler={onimgchangeHandler}
+            selectedImage={selectedImage}
+            handleImageUpload={handleImageUpload} // Pass the image upload handler
+          />
+          <OcrSection
+            code={code}
+            onchangeHandler={oninputChangeHandler}
+            handleRunClick={handleRunClick}
+          />
+          <OutputSection output={output} ref={ref} />
         </div>
-        {/* <div className="user-img">.</div> */}
-      </div>
-      <div className="sections">
-        <ImageSection
-          onchangeHandler={onimgchangeHandler}
-          selectedImage={selectedImage}
-          handleImageUpload={handleImageUpload} // Pass the image upload handler
-        />
-        <OcrSection
-          code={code}
-          onchangeHandler={oninputChangeHandler}
-          handleRunClick={handleRunClick}
-        />
-        <ErrorModal modal={modal} />
-        <OutputSection output={output} ref={ref} />
       </div>
     </div>
   );
