@@ -40,7 +40,7 @@ function App() {
       element.click();
     } else {
       setModal(true);
-      setModalText("Theres no code to download.");
+      setModalText("There's no code to download.");
       setTimeout(() => {
         setModal(false);
         setModalText("");
@@ -103,7 +103,7 @@ function App() {
   const handleRunClick = async () => {
     if (!code.ocr) {
       setModal(true);
-      setModalText("Theres no code to compile.");
+      setModalText("There's no code to compile.");
       setTimeout(() => {
         setModal(false);
         setModalText("");
