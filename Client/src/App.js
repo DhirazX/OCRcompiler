@@ -6,6 +6,7 @@ import OutputSection from "./sections/OutputSection";
 import ErrorModal from "./sections/ErrorModal";
 import axios from "axios";
 import Tesseract from "tesseract.js";
+import { HiDownload } from "react-icons/hi";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -15,6 +16,7 @@ function App() {
   const ref = useRef(null);
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState("");
+  const [windowSize, setWindowSize] = useState();
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -49,7 +51,13 @@ function App() {
   };
 
   //Fetches data
-  useEffect(() => {}, [selectedImage]);
+  // useEffect(() => {
+  //   setWindowSize(window.innerWidth);
+  // }, [window.innerWidth]);
+
+  window.addEventListener("resize", () => {
+    setWindowSize(window.innerWidth);
+  });
 
   const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
@@ -138,7 +146,13 @@ function App() {
             <span className="primary-color">OCR</span>compiler
           </div>
           <div className="save-btn btn-primary" onClick={downloadTxtFile}>
-            {window.innerWidth <= 450 ? "D" : "Download Code"}
+            {windowSize >= 450 ? (
+              "Download Code"
+            ) : (
+              <div>
+                <HiDownload className="download-icon" />
+              </div>
+            )}
           </div>
           {/* <div className="user-img">.</div> */}
         </div>

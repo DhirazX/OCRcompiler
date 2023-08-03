@@ -169,6 +169,7 @@
 .upload-icon {
   font-size: 80px;
 }
+
 #inputImg {
   height: 100%;
   width: 100%;
@@ -210,6 +211,9 @@
 }
 
 @media only screen and (max-width: 450px) {
+  .navbar {
+    padding-top: 15px;
+  }
   .image-section,
   .ocr-section,
   .output-section {
@@ -222,7 +226,11 @@
     padding: 0 20px;
     font-size: 14px;
   }
-  .btn-primary, .btn-secondary{
+  .btn-primary,
+  .btn-secondary {
     padding: 5px 10px;
+  }
+  .download-icon {
+    font-size: 14px;
   }
 }
