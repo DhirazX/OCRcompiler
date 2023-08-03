@@ -10,6 +10,7 @@
   right: 0;
   z-index: 2;
   /* animation: slide 5s; */
+  /* animation-delay: 2s; */
   transform: translateX(100%);
   transition: transform 1s ease;
 }

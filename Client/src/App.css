@@ -184,3 +184,45 @@
   color: var(--white);
   overflow: hidden;
 }
+
+@media only screen and (max-width: 900px) {
+  .sections {
+    display: flex;
+    flex-direction: column;
+    margin: 3% 0;
+    gap: 20px;
+  }
+  .output-section {
+    grid-column-start: 0;
+    grid-column-end: 1;
+  }
+  .image-input-text {
+    padding: 15%;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .image-section,
+  .ocr-section,
+  .output-section {
+    height: 60vh;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .image-section,
+  .ocr-section,
+  .output-section {
+    height: 50vh;
+  }
+  .logo {
+    font-size: 14px;
+  }
+  .section-title-text {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+  .btn-primary, .btn-secondary{
+    padding: 5px 10px;
+  }
+}
