@@ -21,7 +21,7 @@ def upload_image():
     image.save('Images/image.jpg')
     return "Image uploaded successfully",200
 
-@app.route("/ocr")
+@app.route('/ocr')
 def ocr():
     data=m.run()
     a=json.dumps(data)

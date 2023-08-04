@@ -72,7 +72,7 @@ function App() {
     });
 
     // Check if the OCR output contains a substantial amount of text
-    const minTextLength = 50;
+    const minTextLength = 5;
 
     if (textData.data.text.length >= minTextLength) {
       const formData = new FormData();
