@@ -5,7 +5,7 @@ import pytesseract as py
 
 
 def run():
-    img_path = "Images/test6.jpg"
+    img_path = "Images/image.jpg"
     img = cv2.imread(img_path)
 
     #Image processing
@@ -22,15 +22,13 @@ def run():
     ocr_text=py.image_to_string(ocr_img)
     
     #testing
-    #cv2.imshow("test",f.rescaleFrame(ocr_img))
+    # cv2.imshow("test",f.rescaleFrame(img_bw))
     # cv2.waitKey(0)
     data={
         'ocr':ocr_text,
         'NA':'test'
     }
     return data
-    
-run()
 
 
 

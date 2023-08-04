@@ -1,7 +1,14 @@
-node_modules\
+# Dirtual Env
+Server/venv/
+
+# Cache 
+Server/__pycache__/
+
+# Dependencies
+/.pnp
+.pnp.js
 Client/node_modules/
-node_modules/
-Server/venv/
-Server/venv/
+
+# Testing
+/coverage
 Server/test.py
-Server/_pycache_/

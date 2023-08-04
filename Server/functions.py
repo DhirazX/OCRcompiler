@@ -28,7 +28,7 @@ def rescaleFrame(frame,scale=0.5):
 
 #Contures detection function 
 def contures_detection(edged,img):
-    img_temp = img.copy()
+    # img_temp = img.copy()
     def biggest_contour(contours):
         biggest = np.array([])
         max_area = 0
@@ -50,6 +50,10 @@ def contures_detection(edged,img):
     if len(biggest) == 0:
         return img
     else:
+        #For testing
+        # cv2.drawContours(img_temp, [biggest], -1, (0, 255, 0), 5)
+        # cv2.imshow('contour',img_temp)
+        
         #Prespective transformation
         points = biggest.reshape(4, 2)
         input_points = np.zeros((4, 2), dtype="float32")
@@ -80,6 +84,4 @@ def contures_detection(edged,img):
         matrix = cv2.getPerspectiveTransform(input_points, converted_points)
         img_output = cv2.warpPerspective(img, matrix, (max_width, max_height))
         
-        #For debugging 
-        cv2.drawContours(img_temp, [biggest], -1, (0, 255, 0), 5)
         return img_output
