@@ -19,19 +19,6 @@ function App() {
   const [windowSize, setWindowSize] = useState();
   const [progressBar, setProgressBar] = useState(0);
 
-  // const convertImageToText = async () => {
-  //   if (!selectedImage) return;
-  //   Tesseract.recognize(selectedImage, "eng", {
-  //     logger: (m) => console.log(m),
-  //   }).then(({ data: { text } }) => {
-  //     setData(text);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   convertImageToText();
-  // }, [selectedImage]);
-
   //Downloads the code as a txt file
   const downloadTxtFile = () => {
     if (code) {
@@ -51,19 +38,17 @@ function App() {
     }
   };
 
-  //Fetches data
-  // useEffect(() => {
-  //   setWindowSize(window.innerWidth);
-  // }, [window.innerWidth]);
-
+  //For updating windowSize on resize
   window.addEventListener("resize", () => {
     setWindowSize(window.innerWidth);
   });
 
+  //Sets the input image on the state variable
   const onimgchangeHandler = (e) => {
     setSelectedImage(e.target.files[0]);
   };
 
+  //Handles Image Upload
   const handleImageUpload = async () => {
     if (!selectedImage) return;
 
@@ -104,10 +89,12 @@ function App() {
     }
   };
 
+  //Sets Code as the editor updates
   const oninputChangeHandler = (e) => {
     setCode(e.target.value);
   };
 
+  //Handles compile btn click
   const handleRunClick = async () => {
     if (!code) {
       setModal(true);
