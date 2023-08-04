@@ -25,6 +25,9 @@ def run(image_Name):
     #testing
     # cv2.imshow("test",f.rescaleFrame(img_bw))
     # cv2.waitKey(0)
+    save_folder = "processed_img"
+    img_path=os.path.join(save_folder, image_Name)
+    cv2.imwrite(img_path,ocr_img)
     data={
         'ocr':ocr_text,
         'NA':'test'

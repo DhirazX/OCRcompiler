@@ -21,11 +21,9 @@ function OcrSection({ onchangeHandler, code , handleRunClick}) {
           extensions={[cpp(), EditorView.lineWrapping]}
           lineWrapping="true"
           className="codemirror-wrapper"
-          onChange={(e) => {
-            onchangeHandler(e);
-          }}
-          value={code.ocr} 
-          // onChangeCapture={onchangeHandler}
+          // onChange={onchangeHandler}
+          value={code} 
+          onChangeCapture={onchangeHandler}
         />
       </div>
       <div className="ocr-btns">

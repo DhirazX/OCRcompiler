@@ -10,8 +10,8 @@ import { HiDownload } from "react-icons/hi";
 
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
-  // const [data, setData] = useState({});
-  const [code, setCode] = useState({});
+  const [data, setData] = useState({});
+  const [code, setCode] = useState('');
   const [output, setOutput] = useState("");
   const ref = useRef(null);
   const [modal, setModal] = useState(false);
@@ -34,15 +34,14 @@ function App() {
 
   //Downloads the code as a txt file
   const downloadTxtFile = () => {
-    if (code.ocr) {
+    if (code) {
       const element = document.createElement("a");
-      const file = new Blob([code.ocr], { type: "text/plain" });
+      const file = new Blob([code], { type: "text/plain" });
       element.href = URL.createObjectURL(file);
       element.download = "code.txt";
       document.body.appendChild(element);
       element.click();
     } else {
-      console.log(progressBar);
       setModal(true);
       setModalText("There's no code to download.");
       setTimeout(() => {
@@ -88,7 +87,8 @@ function App() {
         fetch("/ocr")
           .then((response) => response.json())
           .then((data) => {
-            setCode(data);
+            setData(data);
+            setCode(data.ocr);
           });
         //Handles the response from the backend if needed
       } catch (error) {
@@ -109,7 +109,7 @@ function App() {
   };
 
   const handleRunClick = async () => {
-    if (!code.ocr) {
+    if (!code) {
       setModal(true);
       setModalText("There's no code to compile.");
       setTimeout(() => {
@@ -117,6 +117,7 @@ function App() {
         setModalText("");
       }, 2000);
     } else {
+      console.log(code)
       const payload = {
         code,
       };
