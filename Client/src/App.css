@@ -128,6 +128,10 @@
   font-size: 1rem;
   padding: 8px 10px;
 }
+
+.scan-btn {
+  margin-right: 0;
+}
 .output-section {
   grid-column-start: 0;
   grid-column-end: span 2;
@@ -154,7 +158,9 @@
   bottom: 0;
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 0 3%;
+  /* flex-direction: row-reverse; */
 }
 .image-input-text {
   display: flex;
@@ -184,6 +190,17 @@
   height: 92%;
   color: var(--white);
   overflow: hidden;
+}
+
+.progress-bar {
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 12px;
+  /* height: 15px; */
+  background-color: var(--green);
+  border-radius: 20px;
+  margin-right: 5%;
+  text-align: center;
 }
 
 @media only screen and (max-width: 900px) {

@@ -3,7 +3,12 @@ import "../App.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BsCardImage } from "react-icons/bs";
 
-function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
+function imageInput({
+  onchangeHandler,
+  selectedImage,
+  handleImageUpload,
+  progressBar,
+}) {
   return (
     <div className="image-section">
       <div className="section-title">
@@ -35,7 +40,18 @@ function imageInput({ onchangeHandler, selectedImage, handleImageUpload }) {
           )}
           {selectedImage && (
             <div className="btn-section">
-              <div className="scan-btn btn-secondary" onClick={handleImageUpload}>
+              <div
+                className="progress-bar"
+                style={{
+                  width: `${progressBar * 100}%`,
+                }}
+              >
+                {`${Math.round(progressBar * 100)}%`}
+              </div>
+              <div
+                className="scan-btn btn-secondary"
+                onClick={handleImageUpload}
+              >
                 Scan
               </div>
             </div>
