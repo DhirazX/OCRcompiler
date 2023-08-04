@@ -74,6 +74,7 @@ function App() {
           .then((data) => {
             setData(data);
             setCode(data.ocr);
+            console.log(code);
           });
         //Handles the response from the backend if needed
       } catch (error) {
@@ -91,7 +92,9 @@ function App() {
 
   //Sets Code as the editor updates
   const oninputChangeHandler = (e) => {
-    setCode(e.target.value);
+    console.log("EVENT E: ", e);
+    setCode(e);
+    console.log("CODE: ",code);
   };
 
   //Handles compile btn click
