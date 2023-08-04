@@ -147,7 +147,7 @@ function App() {
             <span className="primary-color">OCR</span>compiler
           </div>
           <div className="save-btn btn-primary" onClick={downloadTxtFile}>
-            {windowSize <= 450 ? (
+            {windowSize <= 580 ? (
               <div>
                 <HiDownload className="download-icon" />
               </div>

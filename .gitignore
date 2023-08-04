@@ -8,6 +8,7 @@ Server/__pycache__/
 /.pnp
 .pnp.js
 Client/node_modules/
+node_modules/
 
 # Testing
 /coverage
