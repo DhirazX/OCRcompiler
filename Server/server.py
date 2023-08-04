@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'Images'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-
+image_Name = None
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -25,27 +25,26 @@ def allowed_file(filename):
            
 @app.route('/image', methods=['POST'])
 def upload_image():
+    global image_Name 
     if 'image' not in request.files:
         return "No image in th request",400
     
     image = request.files['image']
-    
     if image.filename == '':
         return "No image in th request",400
         
     if image and allowed_file(image.filename):
         filename = secure_filename(image.filename)
+        image_Name=filename
         image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         return "Image uploaded successfully",200
-
 # @app.route('/result')
 # def get_image():
     
 @app.route('/ocr')
 def ocr():
-    data=m.run()
+    data=m.run(image_Name)
     a=json.dumps(data)
     return a
-
 if __name__ == "__main__":
     app.run(debug=True)

@@ -2,10 +2,11 @@
 import cv2 
 import functions as f
 import pytesseract as py
+import os
 
-
-def run():
-    img_path = "Images/image.jpg"
+def run(image_Name):
+    img_folder = "Images"
+    img_path = os.path.join(img_folder, image_Name)
     img = cv2.imread(img_path)
 
     #Image processing
