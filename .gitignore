@@ -1,7 +1,28 @@
-node_modules\
-Client/node_modules/
-node_modules/
+# Dirtual Env
 Server/venv/
-Server/venv/
-Server/test.py
+
+# Cache 
 Server/__pycache__/
+
+# Dependencies
+/.pnp
+.pnp.js
+Client/node_modules/
+
+# Testing
+/coverage
+Server/test.py
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
