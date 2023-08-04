@@ -1,8 +1,7 @@
-# from PIL import Image
 import cv2 
+import os
 import functions as f
 import pytesseract as py
-import os
 
 def run(image_Name):
     img_folder = "Images"

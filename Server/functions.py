@@ -2,23 +2,24 @@ import cv2
 import numpy as np
 
 def img_Processing(img):
-    #Grayscale
+    # Grayscale
     gray_img=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     
-    #Noise Removal
+    # Noise Removal
     gray_img = cv2.bilateralFilter(gray_img,20,30,30)
 
-    #Binarization
+    # Binarization
     img_bw = cv2.adaptiveThreshold(gray_img,255,cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY,9,3)
 
-    #Morph
+    # Morph
     kernal = np.ones((3,2),np.uint8)
     op = cv2.morphologyEx(img_bw,cv2.MORPH_OPEN,kernal)
     
+    # Thickening
     er=cv2.erode(op,kernal,iterations=1)
     return er
     
-#Resize and rescale
+# Rescale
 def rescaleFrame(frame,scale=0.5): 
     width = int(frame.shape[1]*scale) 
     height = int(frame.shape[0]*scale)
@@ -26,7 +27,7 @@ def rescaleFrame(frame,scale=0.5):
     return cv2.resize(frame , dimensions , interpolation=cv2.INTER_AREA)
 
 
-#Contures detection function 
+# Contures detection
 def contures_detection(edged,img):
     # img_temp = img.copy()
     def biggest_contour(contours):
@@ -50,7 +51,7 @@ def contures_detection(edged,img):
     if len(biggest) == 0:
         return img
     else:
-        #For testing
+        # For testing
         # cv2.drawContours(img_temp, [biggest], -1, (0, 255, 0), 5)
         # cv2.imshow('contour',img_temp)
         
