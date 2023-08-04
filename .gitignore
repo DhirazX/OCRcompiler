@@ -4,3 +4,4 @@ node_modules/
 Server/venv/
 Server/venv/
 Server/test.py
+Server/_pycache_/

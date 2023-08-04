@@ -17,6 +17,7 @@ function App() {
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState("");
   const [windowSize, setWindowSize] = useState();
+  const [progressBar, setProgressBar] = useState(0);
 
   // const convertImageToText = async () => {
   //   if (!selectedImage) return;
@@ -41,6 +42,7 @@ function App() {
       document.body.appendChild(element);
       element.click();
     } else {
+      console.log(progressBar);
       setModal(true);
       setModalText("There's no code to download.");
       setTimeout(() => {
@@ -68,11 +70,10 @@ function App() {
 
     // Perform OCR on the image using Tesseract
     const textData = await Tesseract.recognize(selectedImage, "eng", {
-      logger: (m) => console.log(m),
+      logger: (m) => setProgressBar(m.progress),
     });
-
     // Check if the OCR output contains a substantial amount of text
-    const minTextLength = 50;
+    const minTextLength = 5;
 
     if (textData.data.text.length >= minTextLength) {
       const formData = new FormData();
@@ -83,7 +84,7 @@ function App() {
           "http://localhost:5000/image",
           formData
         );
-        console.log(response.data);
+        console.log(response);
         fetch("/ocr")
           .then((response) => response.json())
           .then((data) => {
@@ -120,7 +121,7 @@ function App() {
         code,
       };
       const outputData = await axios.post("http://localhost:4999/py", payload);
-      console.log(outputData.data.output);
+      // console.log(outputData.data.output);
       setOutput(outputData.data.output);
       ref.current?.scrollIntoView({ behavior: "smooth" });
     }
@@ -146,12 +147,12 @@ function App() {
             <span className="primary-color">OCR</span>compiler
           </div>
           <div className="save-btn btn-primary" onClick={downloadTxtFile}>
-            {windowSize >= 450 ? (
-              "Download Code"
-            ) : (
+            {windowSize <= 450 ? (
               <div>
                 <HiDownload className="download-icon" />
               </div>
+            ) : (
+              "Download Code"
             )}
           </div>
           {/* <div className="user-img">.</div> */}
@@ -161,6 +162,7 @@ function App() {
             onchangeHandler={onimgchangeHandler}
             selectedImage={selectedImage}
             handleImageUpload={handleImageUpload} // Pass the image upload handler
+            progressBar={progressBar}
           />
           <OcrSection
             code={code}
