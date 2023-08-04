@@ -8,6 +8,7 @@ function imageInput({
   selectedImage,
   handleImageUpload,
   progressBar,
+  handleReupload,
 }) {
   return (
     <div className="image-section">
@@ -40,18 +41,24 @@ function imageInput({
           )}
           {selectedImage && (
             <div className="btn-section">
-              <div
-                className="progress-bar"
-                style={{
-                  width: `${progressBar * 100}%`,
-                }}
-              >
-                {`${Math.round(progressBar * 100)}%`}
+              <div className="progress-wrapper">
+                <div
+                  className="progress-bar"
+                  style={{
+                    width: `${progressBar * 100}%`,
+                  }}
+                >
+                  {`${Math.round(progressBar * 100)}%`}
+                </div>
               </div>
+
               <div
-                className="scan-btn btn-secondary"
-                onClick={handleImageUpload}
+                className="reupload-btn btn-secondary"
+                onClick={handleReupload}
               >
+                Reupload
+              </div>
+              <div className="scan-btn btn-primary" onClick={handleImageUpload}>
                 Scan
               </div>
             </div>

@@ -11,7 +11,7 @@ import { HiDownload } from "react-icons/hi";
 function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [data, setData] = useState({});
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
   const ref = useRef(null);
   const [modal, setModal] = useState(false);
@@ -90,11 +90,16 @@ function App() {
     }
   };
 
+  //handles image reupload
+  const handleReupload = () => {
+    setSelectedImage(null);
+  };
+
   //Sets Code as the editor updates
   const oninputChangeHandler = (e) => {
     console.log("EVENT E: ", e);
     setCode(e);
-    console.log("CODE: ",code);
+    console.log("CODE: ", code);
   };
 
   //Handles compile btn click
@@ -107,7 +112,7 @@ function App() {
         setModalText("");
       }, 2000);
     } else {
-      console.log(code)
+      console.log(code);
       const payload = {
         code,
       };
@@ -154,6 +159,7 @@ function App() {
             selectedImage={selectedImage}
             handleImageUpload={handleImageUpload} // Pass the image upload handler
             progressBar={progressBar}
+            handleReupload={handleReupload}
           />
           <OcrSection
             code={code}
