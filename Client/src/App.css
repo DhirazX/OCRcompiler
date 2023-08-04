@@ -122,7 +122,8 @@
 }
 .compile-btn,
 .prettify-btn,
-.scan-btn {
+.scan-btn,
+.reupload-btn {
   margin: 10px 0;
   margin-right: 10px;
   font-size: 1rem;
@@ -191,7 +192,10 @@
   color: var(--white);
   overflow: hidden;
 }
-
+.progress-wrapper {
+  flex: 1;
+  margin-right: 10px;
+}
 .progress-bar {
   color: var(--dark);
   font-weight: 600;
