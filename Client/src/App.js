@@ -18,7 +18,6 @@ function App() {
   const [modalText, setModalText] = useState("");
   const [windowSize, setWindowSize] = useState();
   const [progressBar, setProgressBar] = useState(0);
-  const [progressStatus, setProgressStatus] = useState("");
 
   //Downloads the code as a txt file
   const downloadTxtFile = () => {
@@ -57,8 +56,6 @@ function App() {
     const textData = await Tesseract.recognize(selectedImage, "eng", {
       logger: (m) => {
         setProgressBar(m.progress);
-        setProgressStatus(m.status);
-        console.log("M: ", progressStatus);
       },
     });
     // Check if the OCR output contains a substantial amount of text
