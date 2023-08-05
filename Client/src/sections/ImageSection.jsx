@@ -42,6 +42,7 @@ function imageInput({
           {selectedImage && (
             <div className="btn-section">
               <div className="progress-wrapper">
+                <div className="progress-text">TExt</div>
                 <div
                   className="progress-bar"
                   style={{

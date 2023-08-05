@@ -18,6 +18,7 @@ function App() {
   const [modalText, setModalText] = useState("");
   const [windowSize, setWindowSize] = useState();
   const [progressBar, setProgressBar] = useState(0);
+  const [progressStatus, setProgressStatus] = useState("");
 
   //Downloads the code as a txt file
   const downloadTxtFile = () => {
@@ -54,7 +55,11 @@ function App() {
 
     // Perform OCR on the image using Tesseract
     const textData = await Tesseract.recognize(selectedImage, "eng", {
-      logger: (m) => setProgressBar(m.progress),
+      logger: (m) => {
+        setProgressBar(m.progress);
+        setProgressStatus(m.status);
+        console.log("M: ", progressStatus);
+      },
     });
     // Check if the OCR output contains a substantial amount of text
     const minTextLength = 5;
@@ -93,6 +98,7 @@ function App() {
   //handles image reupload
   const handleReupload = () => {
     setSelectedImage(null);
+    setCode("");
   };
 
   //Sets Code as the editor updates
@@ -117,8 +123,12 @@ function App() {
         code,
       };
       const outputData = await axios.post("http://localhost:4999/py", payload);
-      // console.log(outputData.data.output);
-      setOutput(outputData.data.output);
+      // console.log("OUTPUTDATA:", outputData.data);
+      if (outputData.data.error) {
+        setOutput(outputData.data.error);
+      } else {
+        setOutput(outputData.data.output);
+      }
       ref.current?.scrollIntoView({ behavior: "smooth" });
     }
   };
