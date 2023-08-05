@@ -52,12 +52,30 @@ app.post("/test", (req, res) => {
 });
 
 app.post("/py", (req, res) => {
-  const { code } = req.body;  
+  const { code, input } = req.body;
   var envData = { OS: "windows" };
-  compiler.compilePython(envData, code, function (data) {
+  // compiler.compilePython(envData, code, function (data) {
+  //   res.send(data);
+  // });
+  compiler.compilePythonWithInput(envData, code, input, function (data) {
     res.send(data);
   });
 });
+
+// app.post("/py", (req, res) => {
+//   const { code } = req.body;
+//   var envData = { OS: "windows" };
+//   const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   });
+//   rl.question('Enter input: ', (input) => {
+//     compiler.compilePythonWithInput(envData, code, input, function (data) {
+//       res.send(data);
+//       rl.close();
+//     });
+//   });
+// });
 
 app.post("/cpp", (req, res) => {
   const { code } = req.body;

@@ -13,6 +13,7 @@ function App() {
   const [data, setData] = useState({});
   const [code, setCode] = useState("");
   const [output, setOutput] = useState("");
+  const [input, setInput] = useState("");
   const ref = useRef(null);
   const [modal, setModal] = useState(false);
   const [modalText, setModalText] = useState("");
@@ -117,9 +118,10 @@ function App() {
       console.log(code);
       const payload = {
         code,
+        input,
       };
       const outputData = await axios.post("http://localhost:4999/py", payload);
-      // console.log("OUTPUTDATA:", outputData.data);
+      console.log("OUTPUTDATA:", outputData.data);
       if (outputData.data.error) {
         setOutput(outputData.data.error);
       } else {
@@ -127,6 +129,12 @@ function App() {
       }
       ref.current?.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  //Handles Input Change
+  const handleInputChange = (e) => {
+    // setInput("");
+    setInput(e.target.value);
   };
 
   return (
@@ -172,7 +180,12 @@ function App() {
             onchangeHandler={oninputChangeHandler}
             handleRunClick={handleRunClick}
           />
-          <OutputSection output={output} ref={ref} />
+          <OutputSection
+            output={output}
+            ref={ref}
+            input={input}
+            handleInputChange={handleInputChange}
+          />
         </div>
       </div>
     </div>
