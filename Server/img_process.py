@@ -1,8 +1,7 @@
-# from PIL import Image
 import cv2 
+import os
 import functions as f
 import pytesseract as py
-import os
 
 def run(image_Name):
     img_folder = "Images"
@@ -28,6 +27,7 @@ def run(image_Name):
     save_folder = "processed_img"
     img_path=os.path.join(save_folder, image_Name)
     cv2.imwrite(img_path,ocr_img)
+    
     data={
         'ocr':ocr_text,
         'NA':'test'
