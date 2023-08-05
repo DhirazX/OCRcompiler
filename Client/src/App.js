@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 import ImageSection from "./sections/ImageSection.jsx";
 import OcrSection from "./sections/OcrSection";
@@ -99,13 +99,12 @@ function App() {
   const handleReupload = () => {
     setSelectedImage(null);
     setCode("");
+    setOutput("");
   };
 
   //Sets Code as the editor updates
   const oninputChangeHandler = (e) => {
-    console.log("EVENT E: ", e);
     setCode(e);
-    console.log("CODE: ", code);
   };
 
   //Handles compile btn click
